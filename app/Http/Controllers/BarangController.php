@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\Keranjang;
+use Illuminate\Routing\Controller as BaseController;
 
-class BarangController extends Controller
+session_start();
+
+class BarangController extends BaseController
 {
     public function index()
     {
@@ -16,7 +19,7 @@ class BarangController extends Controller
             $jumBarang = Barang::jumBarang();
             $jumBasket = Keranjang::jumBasket($id);
 
-            return view('Page.barang', [
+            return view('page.barang', [
                 'data' => $_SESSION['data'],
                 'login' => $_SESSION['login'],
                 'title' => "Daftar Barang",

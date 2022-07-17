@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Keranjang;
+use Illuminate\Routing\Controller as BaseController;
 
-class KeranjangController extends Controller
+session_start();
+
+class KeranjangController extends BaseController
 {
     public function index()
     {
@@ -14,7 +17,7 @@ class KeranjangController extends Controller
             $dataKeranjang = Keranjang::allDataWithBarang($id);
             $jumBasket = Keranjang::jumBasket($id);
 
-            return view('Page.keranjang', [
+            return view('page.keranjang', [
                 'data' => $_SESSION['data'],
                 'login' => $_SESSION['login'],
                 'title' => "Keranjang",
@@ -43,7 +46,7 @@ class KeranjangController extends Controller
                 $dataKeranjang = Keranjang::allDataWithBarang($id_user);
                 $jumBasket = Keranjang::jumBasket($id_user);
 
-                return view('Page.keranjang', [
+                return view('page.keranjang', [
                     'data' => $_SESSION['data'],
                     'login' => $_SESSION['login'],
                     'title' => "Keranjang",
@@ -52,7 +55,7 @@ class KeranjangController extends Controller
                     'success' => 'Berhasil menghapus barang dari chart!',
                 ]);
             } else {
-                return view('Page.keranjang', [
+                return view('page.keranjang', [
                     'data' => $_SESSION['data'],
                     'login' => $_SESSION['login'],
                     'title' => "Keranjang",

@@ -119,7 +119,7 @@
                      <div class="card">
                          <div class="card-body">
                              <center class="m-t-30">
-                                 <img src="{{ url('/') }}/img/User/1.jpg" class="rounded-circle" width="200"
+                                 <img src="{{ url('/') }}/img/user/1.jpg" class="rounded-circle" width="200"
                                      height="200">
 
                                  <h4 class="card-title m-t-10">{{ ucwords($data['nama']) }}</h4>
@@ -217,7 +217,8 @@
                                  </div>
                                  <div class="form-group">
                                      <div class="col-sm-12">
-                                         <button type="submit" name="change" class="btn btn-danger text-white">Change
+                                         <button type="submit" id="submit" name="change"
+                                             class="btn btn-danger text-white" disabled>Change
                                              Password</button>
                                      </div>
                                  </div>
@@ -227,6 +228,87 @@
                      <!-- Column -->
                  </div>
              </div>
+
+             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+             <script>
+                 $(document).ready(function() {
+                     $('#passlama').on('keyup', function() {
+                         let passlama = document.getElementById('passlama').value;
+                         let password = document.getElementById('password').value;
+                         let passkon = document.getElementById('passkon').value;
+                         let submit = document.getElementById('submit');
+
+
+                         if (passlama == "" || password == "" || passkon == "") {
+                             submit.disabled = true;
+                         } else {
+                             submit.disabled = false;
+                         }
+                     })
+
+                     $('#password').on('keyup', function() {
+                         let passlama = document.getElementById('passlama').value;
+                         let password = document.getElementById('password').value;
+                         let passkon = document.getElementById('passkon').value;
+                         let submit = document.getElementById('submit');
+
+
+                         if (passlama == "" || password == "" || passkon == "") {
+                             submit.disabled = true;
+                         } else {
+                             submit.disabled = false;
+                         }
+                     })
+
+                     $('#passkon').on('keyup', function() {
+                         let passlama = document.getElementById('passlama').value;
+                         let password = document.getElementById('password').value;
+                         let passkon = document.getElementById('passkon').value;
+                         let submit = document.getElementById('submit');
+
+
+                         if (passlama == "" || password == "" || passkon == "") {
+                             submit.disabled = true;
+                         } else {
+                             submit.disabled = false;
+                         }
+                     })
+                 });
+             </script>
+
+
+             <script>
+                 $(document).ready(function() {
+                     $('#passkon').on('keyup', function() {
+                         let pass = $('#password').val();
+                         let passkon = $('#passkon').val();
+                         let submit = document.getElementById('submit');
+
+                         if (passkon != pass) {
+                             $('#passkon').addClass("is-invalid");
+                             submit.disabled = true;
+                         } else {
+                             submit.disabled = false;
+                             $('#passkon').removeClass("is-invalid");
+                         }
+                     });
+                     $('#password').on('keyup', function() {
+                         let pass = $('#password').val();
+                         let passkon = $('#passkon').val();
+                         let submit = document.getElementById('submit');
+
+                         if (passkon != "") {
+                             if (passkon != pass) {
+                                 submit.disabled = true;
+                                 $('#passkon').addClass("is-invalid");
+                             } else {
+                                 submit.disabled = false;
+                                 $('#passkon').removeClass("is-invalid");
+                             }
+                         }
+                     });
+                 });
+             </script>
              <!-- Row -->
              <!-- ============================================================== -->
              <!-- End PAge Content -->

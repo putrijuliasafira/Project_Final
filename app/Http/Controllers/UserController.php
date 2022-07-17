@@ -3,15 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-
-use Illuminate\Http\Request;
-
-use function PHPUnit\Framework\isNull;
 use App\Models\Barang;
 use App\Models\Keranjang;
+use Illuminate\Routing\Controller as BaseController;
 
+session_start();
 
-class UserController extends Controller
+class UserController extends BaseController
 {
     public function index()
     {
@@ -32,7 +30,7 @@ class UserController extends Controller
 
         if (count($data) != 0) {
             $_SESSION['data'] = (array) $data[0];
-            $_SESSION['login'] = true;
+            $_SESSION['login'] = "1";
             $nama = $_SESSION['data']['nama'];
 
             $id = $_SESSION['data']['id_user'];
@@ -40,7 +38,7 @@ class UserController extends Controller
 
             $barang = Barang::allData();
 
-            return view('Page.home', [
+            return view('page.home', [
                 'data' => $_SESSION['data'],
                 'login' => $_SESSION['login'],
                 'title' => "Dashboard",
@@ -108,7 +106,7 @@ class UserController extends Controller
             $jumBasket = Keranjang::jumBasket($id);
 
             $dataUsers = User::findById($id);
-            return view('Page.profile', [
+            return view('page.profile', [
                 'title' => "Profile",
                 'jumBasket' => $jumBasket,
                 'data' => $dataUsers,
@@ -153,7 +151,7 @@ class UserController extends Controller
 
                         $_SESSION['data']['nama'] = $nama;
                         $_SESSION['data']['username'] = $username;
-                        return view('Page.profile', [
+                        return view('page.profile', [
                             'title' => "Profile",
                             'jumBasket' => $jumBasket,
                             'data' => $user,
@@ -165,14 +163,14 @@ class UserController extends Controller
                         $_SESSION['data']['nama'] = $nama;
 
                         if ($username != $usernameAsli) {
-                            return view('Page.profile', [
+                            return view('page.profile', [
                                 'title' => "Profile",
                                 'jumBasket' => $jumBasket,
                                 'data' => $user,
                                 'gagal' => "Username sudah ada!",
                             ]);
                         } else {
-                            return view('Page.profile', [
+                            return view('page.profile', [
                                 'title' => "Profile",
                                 'jumBasket' => $jumBasket,
                                 'data' => $user,
@@ -182,7 +180,7 @@ class UserController extends Controller
                     }
                 } else {
                     $user = User::findById($id_user);
-                    return view('Page.profile', [
+                    return view('page.profile', [
                         'title' => "Profile",
                         'jumBasket' => $jumBasket,
                         'data' => $user,
@@ -191,7 +189,7 @@ class UserController extends Controller
             } else {
                 $dataUsers = User::findById($id_user);
 
-                return view('Page.profile', [
+                return view('page.profile', [
                     'title' => "Profile",
                     'jumBasket' => $jumBasket,
                     'data' => $dataUsers,
@@ -226,7 +224,7 @@ class UserController extends Controller
                     $user = User::findById($id_user);
                     $_SESSION['data']['password'] = $user['password'];
 
-                    return view('Page.profile', [
+                    return view('page.profile', [
                         'title' => "Profile",
                         'jumBasket' => $jumBasket,
                         'data' => $user,
@@ -235,7 +233,7 @@ class UserController extends Controller
                 } else {
 
 
-                    return view('Page.profile', [
+                    return view('page.profile', [
                         'title' => "Profile",
                         'jumBasket' => $jumBasket,
                         'data' => $user,
@@ -243,7 +241,7 @@ class UserController extends Controller
                     ]);
                 }
             } else {
-                return view('Page.profile', [
+                return view('page.profile', [
                     'title' => "Profile",
                     'jumBasket' => $jumBasket,
                     'data' => $user,

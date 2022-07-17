@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Transaksi;
 use App\Models\Keranjang;
+use Illuminate\Routing\Controller as BaseController;
 
-class TransaksiController extends Controller
+session_start();
+
+class TransaksiController extends BaseController
 {
     public function addBuy()
     {
@@ -29,7 +32,7 @@ class TransaksiController extends Controller
                     $dataKeranjang = Keranjang::allDataWithBarang($id_user);
                     $jumBasket = Keranjang::jumBasket($id_user);
 
-                    return view('Page.keranjang', [
+                    return view('page.keranjang', [
                         'data' => $_SESSION['data'],
                         'login' => $_SESSION['login'],
                         'title' => "Keranjang",
@@ -39,7 +42,7 @@ class TransaksiController extends Controller
                         'beli' => $addTrans,
                     ]);
                 } else {
-                    return view('Page.keranjang', [
+                    return view('page.keranjang', [
                         'data' => $_SESSION['data'],
                         'login' => $_SESSION['login'],
                         'title' => "Keranjang",
@@ -49,7 +52,7 @@ class TransaksiController extends Controller
                     ]);
                 }
             } else {
-                return view('Page.keranjang', [
+                return view('page.keranjang', [
                     'data' => $_SESSION['data'],
                     'login' => $_SESSION['login'],
                     'title' => "Keranjang",
@@ -81,7 +84,7 @@ class TransaksiController extends Controller
                     $dataKeranjang = Keranjang::allDataWithBarang($id_user);
                     $jumBasket = Keranjang::jumBasket($id_user);
 
-                    return view('Page.keranjang', [
+                    return view('page.keranjang', [
                         'data' => $_SESSION['data'],
                         'login' => $_SESSION['login'],
                         'title' => "Keranjang",
@@ -91,7 +94,7 @@ class TransaksiController extends Controller
                         'beli' => $addTransAll,
                     ]);
                 } else {
-                    return view('Page.keranjang', [
+                    return view('page.keranjang', [
                         'data' => $_SESSION['data'],
                         'login' => $_SESSION['login'],
                         'title' => "Keranjang",
@@ -101,7 +104,7 @@ class TransaksiController extends Controller
                     ]);
                 }
             } else {
-                return view('Page.keranjang', [
+                return view('page.keranjang', [
                     'data' => $_SESSION['data'],
                     'login' => $_SESSION['login'],
                     'title' => "Keranjang",

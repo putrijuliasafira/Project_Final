@@ -12,7 +12,7 @@
     <meta name="description" content="Aplikasi Penjualan Baju">
     <meta name="robots" content="noindex,nofollow">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/ico" sizes="32x32" href="{{ url('/') }}/putri.png">
+    <link rel="icon" type="image/ico" sizes="32x32" href="{{ url('/') }}/js.png">
     <!-- Custom CSS -->
     <link href="{{ url('/') }}/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link href="{{ url('/') }}/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css"
@@ -24,24 +24,27 @@
 
     <style>
         ::-webkit-scrollbar {
-            width: 8px;
-            background-color: #ffffff;
+            height: 6px;
+            width: 6px;
+            border: 1px solid #d5d5d5;
         }
 
         ::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
-            background-color: #e2e2e2;
+            background: #eeeeee;
         }
 
         ::-webkit-scrollbar-thumb {
             border-radius: 10px;
-            background-color: rgba(26, 155, 252, 0.5);
+            /* background-color: rgba(26, 155, 252, 0.5); */
+            background: #b0b0b0;
         }
 
         ::-webkit-scrollbar-thumb:hover {
             border-radius: 5px;
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-            background-color: rgba(0, 121, 214, 0.5);
+            /* background-color: rgba(0, 121, 214, 0.5); */
+            background-color: rgba(220, 220, 220, 1);
         }
 
         @media only screen and (max-width: 993px) {

@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\Keranjang;
+use Illuminate\Routing\Controller as BaseController;
 
+session_start();
 
-class PageController extends Controller
+class PageController extends BaseController
 {
 
     public function index()
@@ -17,7 +19,7 @@ class PageController extends Controller
             $id = $_SESSION['data']['id_user'];
             $jumBasket = Keranjang::jumBasket($id);
 
-            return view('Page.home', [
+            return view('page.home', [
                 'data' => $_SESSION['data'],
                 'barang' => $barang,
                 'login' => $_SESSION['login'],
@@ -43,7 +45,7 @@ class PageController extends Controller
             if ($id_user == $_POST['id_user']) {
                 $jumBasket = Keranjang::insert($id_barang, $id_user, $qty);
 
-                return view('Page.home', [
+                return view('page.home', [
                     'data' => $_SESSION['data'],
                     'barang' => $barang,
                     'login' => $_SESSION['login'],
@@ -54,7 +56,7 @@ class PageController extends Controller
             } else {
                 $jumBasket = Keranjang::jumBasket($id_user);
 
-                return view('Page.home', [
+                return view('page.home', [
                     'data' => $_SESSION['data'],
                     'barang' => $barang,
                     'login' => $_SESSION['login'],
